@@ -1,0 +1,34 @@
+---
+// Content
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+
+// Components
+import BlogCard from '@/components/blog/BlogCard.astro';
+import Layout from '@/layouts/Layout.astro';
+import Pagination from '@/components/blog/Pagination.astro';
+import BlogHero from '@/components/blog/BlogHero.astro';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getCollection('blog', ({ data }) => !data.isDraft);
+
+  return paginate(
+    posts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()),
+    {
+      pageSize: 3,
+    }
+  );
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<Layout title={`My Blog | page ${page.currentPage}`}>
+  <BlogHero currentPage={page.currentPage} />
+  <div class='container'>
+    <section aria-label='Blog Posts' class='grid-wrapper'>
+      {page.data.map(post => <BlogCard post={post} tagName='h2' />)}
+    </section>
+    <Pagination prev={page.url.prev} next={page.url.next} />
+  </div>
+</Layout>

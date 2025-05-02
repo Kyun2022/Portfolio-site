@@ -1,0 +1,17 @@
+---
+// components
+import Heading from '@/components/ui/Heading.astro';
+import Link from '@/components/ui/Link.astro';
+
+// asset
+import avatar from '@/assets/avatar.jpeg';
+---
+
+<section aria-label='Connect with MasanaoFukuishi' class='blog-bio container'>
+  <img src={avatar.src} alt='MasanaoFukuishi' />
+  <div>
+    <Heading tagName='h3' tagSize='h3'> 👋 Hello, I'm Masanao Fukuishi</Heading>
+    <p>フリーランスとして活動しています。<br />主にフロントエンドの開発を行っています。</p>
+    <Link href='/#connect'>Let's Connect</Link>
+  </div>
+</section>

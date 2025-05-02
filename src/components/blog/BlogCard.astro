@@ -1,0 +1,55 @@
+---
+// content
+import type { CollectionEntry } from 'astro:content';
+
+// components
+import Heading from '@/components/ui/Heading.astro';
+import Link from '@/components/ui/Link.astro';
+// import { getEntry } from 'astro:content';
+import FormattedDate from '@/components/ui/FormattedDate.astro';
+
+type Props = {
+  post: CollectionEntry<'blog'>;
+  tagName: 'h2' | 'h3';
+
+  // 追加
+  maxTitleLength?: number;
+  maxDescLength?: number;
+};
+// const { post, tagName } = Astro.props;
+const { post, tagName, maxTitleLength = 13, maxDescLength = 100 } = Astro.props;
+
+const { title, image, slug, description, pubDate, author } = post.data;
+
+// 説明文を切り詰める
+const truncatedDescription =
+  description.length > maxDescLength
+    ? description.substring(0, maxDescLength) + '...'
+    : description;
+
+// タイトルを切り詰める
+const truncatedTitle =
+  title.length > maxTitleLength
+    ? title.substring(0, maxTitleLength) + '...'
+    : title;
+
+// const author = await getEntry(post.data.author.collection, post.data.author.id);
+---
+
+<article aria-label={title} class='blog-card'>
+  <img src={image.src} width={400} height={225} alt={title} />
+  <div class='rows'>
+    <Heading tagName={tagName} tagSize='h4'>
+      {truncatedTitle}
+    </Heading>
+    <div class='columns'>
+      <FormattedDate pubDate={pubDate} />
+      <!-- {author && <small>by {author.data.name}</small>} -->
+      {(<small>by {author.id} (AI)</small>)}
+    </div>
+    <div class='description-container'>
+      <p>{truncatedDescription}</p>
+    </div>
+    <Link href={`/blog/${slug}`} openInNewTab> Read Post </Link>
+  </div>
+</article>

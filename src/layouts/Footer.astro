@@ -1,0 +1,11 @@
+<footer>
+  <p>
+    &copy; <span id='copyright'></span> MasanaoFukuishi | Front-End Engineer. Crafting digital experiences
+    with passion and precision.
+  </p>
+</footer>
+
+<script>
+  const copyrightSpan = document.querySelector('#copyright') as unknown as HTMLSpanElement;
+  copyrightSpan.textContent = new Date().getFullYear().toString();
+</script>

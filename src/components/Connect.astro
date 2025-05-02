@@ -1,0 +1,15 @@
+---
+// assets
+import avatar from '@/assets/avatar.jpeg';
+
+// components
+import ContactForm from '@/components/ContactForm';
+---
+
+<section aria-label='Connect with MasanaoFUkuishi' id='connect'>
+  <div class='form-wrapper'>
+    <div><img src={avatar.src} alt='MasanaoFukuishif' /></div>
+    <!-- contact form -->
+    <ContactForm client:visible />
+  </div>
+</section>

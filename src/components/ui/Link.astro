@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export interface LinkProps extends HTMLAttributes<'a'> {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'ghost' | 'icon';
+  openInNewTab?: boolean;
+}
+
+const { href, variant = 'primary', openInNewTab = false, ...rest } = Astro.props;
+
+// 新しいタブで開く場合の属性を設定
+const newTabProps = openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+---
+
+<a href={href} class:list={['link', variant]} {...rest} {...newTabProps}><slot /></a>

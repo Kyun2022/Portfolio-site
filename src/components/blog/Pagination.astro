@@ -1,0 +1,26 @@
+---
+import Link from '@/components/ui/Link.astro';
+
+type Props = {
+  prev?: string;
+  next?: string;
+};
+const { prev, next } = Astro.props;
+---
+
+<div class='pagination'>
+  {
+    prev && (
+      <Link href={prev} variant='secondary'>
+        <span>Prev</span>
+      </Link>
+    )
+  }
+  {
+    next && (
+      <Link href={next} variant='secondary'>
+        <span>Next</span>
+      </Link>
+    )
+  }
+</div>

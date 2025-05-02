@@ -1,0 +1,44 @@
+---
+import Link from '@/components/ui/Link.astro';
+import Icon from '@/layouts/Icon.astro';
+
+// data
+const navData = [
+  {
+    title: 'Projects',
+    href: '/projects',
+  },
+  {
+    title: 'Home',
+    href: '/',
+  },
+  {
+    title: 'about',
+    href: '/about',
+  },
+  {
+    title: 'blog',
+    href: '/blog',
+  },
+];
+---
+
+<nav>
+  <ul role='list'>
+    {
+      navData.map(data => {
+        const hasIcon = data.href === '/';
+        return (
+          <Link
+            href={data.href}
+            class='link'
+            variant={hasIcon ? 'icon' : 'ghost'}
+            aria-label={hasIcon ? data.title : null}
+          >
+            {hasIcon ? <Icon /> : data.title}
+          </Link>
+        );
+      })
+    }
+  </ul>
+</nav>
