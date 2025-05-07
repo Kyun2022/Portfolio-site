@@ -18,7 +18,9 @@ type Props = {
 // data
 const defaultContent = {
   title: '🙇 はじめまして、Masanao Fukuishiです。',
-  content: ['フリーランスとして活動しています。', '主にフロントエンドの開発を行っています。'],
+  content: [
+    'フリーランスとして活動しています。主にフロントエンドの開発を行っています。',
+  ],
   links: [
     {
       href: 'https://github.com/Kyun2022',
@@ -42,11 +44,11 @@ const {
 
 <section aria-label='Hero section' class='hero'>
   <img src={avatar.src} alt='Masanao Fukuishi' />
-  <Heading tagName='h1' tagSize='h3'>{title}</Heading>
+  <Heading tagName='h1' tagSize='h3' >{title}</Heading>
   <p>{content}</p>
   <div class='columns'>
     {
-      links.map(link => (
+      links.map((link) => (
         <Link href={link.href} variant={link.variant}>
           {link.name}
         </Link>
