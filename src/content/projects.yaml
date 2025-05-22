@@ -1,7 +1,7 @@
 - title: Todo-app
   id: 1
   image: '@/assets/project-thumbnails/todo-app.png'
-  href: 'https://next-tasks-e3e37hv8r-kyuns-projects.vercel.app/'
+  href: 'https://next-tasks-delta-flame.vercel.app/'
 
 - title: React-app
   id: 2
@@ -11,12 +11,12 @@
 - title: Minesweeper
   id: 3
   image: '@/assets/project-thumbnails/minesweeper.png'
-  href: 'https://minesweeper-4qkfvdsej-kyuns-projects.vercel.app/'
+  href: 'https://minesweeper-eight-lake.vercel.app/'
 
 - title: Othello
   id: 4
   image: '@/assets/project-thumbnails/othello.png'
-  href: 'https://othello-p4olwafh6-kyuns-projects.vercel.app/'
+  href: 'https://othello-app-zeta.vercel.app/'
 
 - title: Retreat (all:test)
   id: 5

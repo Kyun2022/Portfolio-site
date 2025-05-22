@@ -837,7 +837,71 @@ adapter: vercel({}),
 
 ---
 
-**何か他に気になる点やエラーがあれば、引き続きサポ
+**何か他に気になる点やエラーがあれば、引き続きサポートしますのでご連絡ください！**
+
+---
+
+_**User**_
+
+サイトは開きますが、コンテンツ内にあるVercelに登録しているサイトが開かず、パスワードを要求されます。
+
+---
+
+_**Assistant**_
+
+ご報告ありがとうございます。  
+「サイト自体は開くが、**コンテンツ内のVercelに登録している他のサイトへのリンクを開くとパスワードを要求される**」という状況ですね。
+
+---
+
+## 考えられる原因
+
+1. **リンク先がVercelの「管理画面」や「Preview Deployment」URLになっている**
+   - 例: `https://vercel.com/your-team/your-project/xxxx` や `https://vercel.com/your-project/preview/xxxx`
+   - これらは**管理者・チームメンバーのみアクセス可能**で、一般公開されていません。  
+   - アクセス時にVercelのログイン画面が表示されます。
+
+2. **リンク先が「.vercel.app」ではなく、Vercelのダッシュボードや管理用URLになっている**
+   - 公開用URL（例: `https://your-project.vercel.app/`）であれば、誰でもアクセス可能です。
+
+---
+
+## 解決策
+
+### 1. **リンク先URLを確認・修正**
+
+- **リンク先が「https://[プロジェクト名].vercel.app」になっているか確認してください。**
+- もし「https://vercel.com/～」や「https://vercel.com/dashboard/～」などになっている場合は、**公開URL（.vercel.app）に修正**してください。
+
+### 2. **リンクの例**
+
+- **OK（公開URL）**  
+  ```
+  https://portfolio-site-3hdnxwk4c-kyuns-projects.vercel.app/
+  https://your-other-project.vercel.app/
+  ```
+- **NG（管理画面URL）**  
+  ```
+  https://vercel.com/kyuns-projects/portfolio-site/xxxx
+  https://vercel.com/dashboard/xxxx
+  ```
+
+---
+
+## まとめ
+
+- **Vercelの管理画面やPreview用URLは、ログインしないと見られません。**
+- **一般公開したい場合は、必ず「.vercel.app」のURLをリンク先に設定してください。**
+
+---
+
+### もし「.vercel.app」でもパスワードが要求される場合
+
+- そのURLを教えていただければ、さらに詳しく調査・サポートいたします！
+
+---
+
+何か他にもご不明点があれば、引き続きサポートいたします！
 
 ---
 
