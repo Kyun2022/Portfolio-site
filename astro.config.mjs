@@ -5,8 +5,11 @@ import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
 
+import vercel from '@astrojs/vercel/static';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://portfolio-site-self-six.vercel.app/',
   integrations: [sitemap(), react()],
+  adapter: vercel({}),
 });
