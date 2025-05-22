@@ -587,7 +587,257 @@ _**User**_
 
 _**Assistant**_
 
+ご安心ください！状況を整理し、**今すぐできる具体的な解決策**をまとめます。
 
+---
+
+## 現状整理
+
+- `@astrojs/vercel`は**すでにpackage.jsonにインストール済み**です（OKです！）
+- しかし、astro.config.mjsに**adapterの設定がありません**
+- そのため、Vercelで正しく静的サイトとしてデプロイされず、Vercelのログイン画面が表示されている可能性が高いです
+
+---
+
+## すぐにやるべきこと
+
+### 1. astro.config.mjsにadapterを追加
+
+以下のように修正してください：
+
+```js
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import react from '@astrojs/react';
+import vercel from '@astrojs/vercel/static'; // 追加
+
+export default defineConfig({
+  site: 'https://portfolio-site-self-six.vercel.app/',
+  integrations: [sitemap(), react()],
+  adapter: vercel(), // 追加
+});
+```
+
+---
+
+### 2. 修正後の手順
+
+1. ファイルを保存
+2. コミット＆GitHubにpush
+3. Vercelで自動デプロイされるのを待つ
+4. 公開URL（https://portfolio-site-3hdnxwk4c-kyuns-projects.vercel.app/）にアクセスして、**正しくサイトが表示されるか確認**
+
+---
+
+## 補足
+
+- **Vercelのログイン画面が出るのは、ビルド成果物が正しく出力されていない場合によく起こります。**
+- adapterの追加でほぼ確実に解決します！
+
+---
+
+もしこの手順でうまくいかない場合や、他にも不明点があれば、どんな小さなことでもご相談ください。  
+引き続きサポートいたします！
+
+---
+
+_**User**_
+
+  adapter: vercel(),
+vercel部分に赤波ラインが出ています。
+
+1 個の引数が必要ですが、0 個指定されました。ts(2554)
+adapter.d.ts(3, 39): 'config' の引数が指定されていません。
+⌘+click to open in new tab
+(alias) vercel(config: VercelServerlessConfig): AstroIntegration
+import vercel
+
+---
+
+_**Assistant**_
+
+ご指摘ありがとうございます。  
+このエラーは、`@astrojs/vercel/static`のadapterが**必ず1つの引数（configオブジェクト）を必要とする**ために発生しています。
+
+---
+
+## 解決方法
+
+`vercel()`の引数に**空のオブジェクト `{}`** を渡してください。
+
+### 修正版
+
+```js
+import vercel from '@astrojs/vercel/static';
+
+// ...既存のコード...
+
+export default defineConfig({
+  site: 'https://portfolio-site-self-six.vercel.app/',
+  integrations: [sitemap(), react()],
+  adapter: vercel({}), // ← 空のオブジェクトを渡す
+});
+```
+
+---
+
+これで赤波ライン（エラー）は消え、正しくビルド・デプロイできるようになります！
+
+---
+
+### 補足
+
+- `vercel({})`のように**空のオブジェクト**を渡すのが公式の推奨です。
+- 追加の設定が必要な場合は、オプションをこのオブジェクトに記述しますが、通常は空でOKです。
+
+---
+
+**この修正後、再度コミット＆プッシュしてVercelでデプロイをお試しください。**  
+何か他にエラーや疑問があれば、引き続きサポートいたします！
+
+---
+
+_**User**_
+
+[22:24:29.035] Running build in Washington, D.C., USA (East) – iad1
+[22:24:29.036] Build machine configuration: 2 cores, 8 GB
+[22:24:29.050] Cloning github.com/Kyun2022/Portfolio-site (Branch: main, Commit: aee3a8b)
+[22:24:29.631] Cloning completed: 581.000ms
+[22:24:29.886] Restored build cache from previous deployment (7bHSy67cMkXd3RmYd7bRMgqeDkAf)
+[22:24:30.251] Running "vercel build"
+[22:24:30.665] Vercel CLI 42.1.1
+[22:24:31.154] Installing dependencies...
+[22:24:32.472] 
+[22:24:32.474] up to date in 1s
+[22:24:32.474] 
+[22:24:32.474] 160 packages are looking for funding
+[22:24:32.475]   run `npm fund` for details
+[22:24:32.509] Running "npm run build"
+[22:24:32.619] 
+[22:24:32.619] > mod-6@0.0.1 build
+[22:24:32.619] > astro build
+[22:24:32.619] 
+[22:24:33.730] The "@astrojs/vercel/static" import is deprecated and will be removed in a future release. Please import from "@astrojs/vercel" instead.
+[22:24:34.320] 13:24:34 [content] Syncing content
+[22:24:34.321] 13:24:34 [content] Astro config changed
+[22:24:34.321] 13:24:34 [content] Clearing content store
+[22:24:34.576] 13:24:34 [content] Synced content
+[22:24:34.577] 13:24:34 [types] Generated 732ms
+[22:24:34.578] 13:24:34 [build] output: "static"
+[22:24:34.578] 13:24:34 [build] mode: "static"
+[22:24:34.579] 13:24:34 [build] directory: /vercel/path0/dist/
+[22:24:34.579] 13:24:34 [build] adapter: @astrojs/vercel
+[22:24:34.580] 13:24:34 [build] Collecting build info...
+[22:24:34.580] 13:24:34 [build] ✓ Completed in 751ms.
+[22:24:34.582] 13:24:34 [build] Building static entrypoints...
+[22:24:36.118] 13:24:36 [WARN] [vite] [33mGenerated an empty chunk: "internal".[39m
+[22:24:36.198] 13:24:36 [vite] [32m✓ built in 1.57s[39m
+[22:24:36.198] 13:24:36 [build] ✓ Completed in 1.62s.
+[22:24:36.199] 
+[22:24:36.199]  building client (vite) 
+[22:24:36.205] 13:24:36 [vite] transforming...
+[22:24:37.118] 13:24:37 [vite] [32m✓[39m 31 modules transformed.
+[22:24:37.184] 13:24:37 [vite] rendering chunks...
+[22:24:37.255] 13:24:37 [vite] computing gzip size...
+[22:24:37.262] 13:24:37 [vite] [2mdist/[22m[2m_astro/[22m[36mindex.BVOCwoKb.js        [39m[1m[2m  7.88 kB[22m[1m[22m[2m │ gzip:  3.05 kB[22m
+[22:24:37.263] 13:24:37 [vite] [2mdist/[22m[2m_astro/[22m[36mContactForm.CroXDP-D.js  [39m[1m[2m 12.91 kB[22m[1m[22m[2m │ gzip:  5.48 kB[22m
+[22:24:37.263] 13:24:37 [vite] [2mdist/[22m[2m_astro/[22m[36mclient.BPIbHqJh.js       [39m[1m[2m179.41 kB[22m[1m[22m[2m │ gzip: 56.60 kB[22m
+[22:24:37.263] 13:24:37 [vite] [32m✓ built in 1.06s[39m
+[22:24:37.281] 
+[22:24:37.281]  generating static routes 
+[22:24:37.290] 13:24:37 ▶ src/pages/404.astro
+[22:24:37.309] 13:24:37   └─ /404.html (+18ms) 
+[22:24:37.311] 13:24:37 ▶ src/pages/about.astro
+[22:24:37.314] 13:24:37   └─ /about/index.html (+3ms) 
+[22:24:37.317] 13:24:37 ▶ src/pages/projects.astro
+[22:24:37.328] 13:24:37   └─ /projects/index.html (+10ms) 
+[22:24:37.333] 13:24:37 ▶ src/pages/blog/[page].astro
+[22:24:37.337] 13:24:37   ├─ /blog/ai-in-web-development/index.html (+3ms) 
+[22:24:37.342] 13:24:37   ├─ /blog/apis-in-web-development/index.html (+5ms) 
+[22:24:37.346] 13:24:37   ├─ /blog/frontend-frameworks-evolution/index.html (+4ms) 
+[22:24:37.349] 13:24:37   ├─ /blog/jamstack-web-development/index.html (+2ms) 
+[22:24:37.351] 13:24:37   ├─ /blog/progressive-web-apps/index.html (+2ms) 
+[22:24:37.357] 13:24:37   ├─ /blog/serverless-architecture-web-development/index.html (+6ms) 
+[22:24:37.361] 13:24:37   └─ /blog/webassembly-future/index.html (+3ms) 
+[22:24:37.366] 13:24:37 ▶ src/pages/index.astro
+[22:24:37.377] 13:24:37   └─ /index.html (+11ms) 
+[22:24:37.382] 13:24:37 ▶ src/pages/blog/[...page].astro
+[22:24:37.385] 13:24:37   ├─ /blog/index.html (+2ms) 
+[22:24:37.387] 13:24:37   ├─ /blog/2/index.html (+2ms) 
+[22:24:37.391] 13:24:37   └─ /blog/3/index.html (+4ms) 
+[22:24:37.391] 13:24:37 ✓ Completed in 123ms.
+[22:24:37.392] 
+[22:24:37.405] 13:24:37 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+[22:24:37.405] 13:24:37 [@astrojs/vercel] Copying static files to .vercel/output/static
+[22:24:37.422] 13:24:37 [build] 14 page(s) built in 3.59s
+[22:24:37.423] 13:24:37 [build] Complete!
+[22:24:37.517] Build Completed in /vercel/output [6s]
+[22:24:37.543] Deploying outputs...
+[22:24:38.827] 
+[22:24:39.120] Deployment completed
+[22:24:46.428] Uploading build cache [44.30 MB]...
+[22:24:47.203] Build cache uploaded: 778.275ms
+[22:24:49.438] Exiting build container
+
+---
+
+_**Assistant**_
+
+ビルドログとこれまでのやり取りから、**問題はほぼ解決しています！**
+
+---
+
+## ポイント整理
+
+- `@astrojs/vercel/static`のadapterを`vercel({})`で正しく指定できています。
+- ビルドも正常に完了し、**「14 page(s) built」**と出ているので、静的ファイルも生成されています。
+- デプロイも正常に完了しています。
+
+---
+
+## ただし、警告が1つ
+
+```
+The "@astrojs/vercel/static" import is deprecated and will be removed in a future release. Please import from "@astrojs/vercel" instead.
+```
+**→ 今後は `@astrojs/vercel/static` ではなく `@astrojs/vercel` を使うことが推奨されています。**
+
+---
+
+## 今後のベストプラクティス
+
+### 1. adapterのimportを修正
+
+```js
+import vercel from '@astrojs/vercel/static'; // ←古い
+// ↓
+import vercel from '@astrojs/vercel'; // ←新しい
+```
+
+### 2. adapterの呼び出しはそのまま
+
+```js
+adapter: vercel({}),
+```
+
+---
+
+## まとめ
+
+- **現状の設定でサイトは正しく表示されるはずです。**
+- もしまだVercelのログイン画面が出る場合は、キャッシュのクリアやシークレットモードで再度アクセスしてみてください。
+- 今後のために、adapterのimportだけ新しいものに変更しておくと安心です。
+
+---
+
+### もしまだ問題が解決しない場合
+
+- 公開URLを再度ご確認ください（例：https://portfolio-site-3hdnxwk4c-kyuns-projects.vercel.app/）
+- それでもログイン画面が出る場合は、**キャッシュクリア・シークレットモード・他端末での確認**をお願いします。
+
+---
+
+**何か他に気になる点やエラーがあれば、引き続きサポ
 
 ---
 
