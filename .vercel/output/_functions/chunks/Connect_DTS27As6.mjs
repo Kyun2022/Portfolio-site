@@ -1,8 +1,8 @@
 import { c as createAstro, a as createComponent, m as maybeRenderHead, b as addAttribute, r as renderComponent, d as renderTemplate } from './astro/server_BKl39dFB.mjs';
 import 'kleur/colors';
 import { a as avatar } from './avatar_BTTZUMET.mjs';
-import { $ as $$Heading } from './Heading_wjP1vLsY.mjs';
-import { $ as $$Link } from './Layout_p0gXUp_r.mjs';
+import { $ as $$Heading } from './Heading_ByWiBAVu.mjs';
+import { $ as $$Link } from './Layout_Ca5AaMkF.mjs';
 import { jsxs, Fragment, jsx } from 'react/jsx-runtime';
 import { useState, useRef } from 'react';
 import toast, { Toaster } from 'react-hot-toast';

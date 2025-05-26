@@ -16,7 +16,11 @@ export default defineConfig({
   site: 'https://portfolio-site-self-six.vercel.app/',
   output: 'server', // サーバーサイドレンダリングを有効にする
   integrations: [sitemap(), react()],
-  adapter: vercel({}),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   vite: {
     define: {
       'process.env.EMAIL_USER': JSON.stringify(env.EMAIL_USER),

@@ -1,7 +1,7 @@
 import { c as createAstro, a as createComponent, m as maybeRenderHead, b as addAttribute, r as renderComponent, d as renderTemplate } from './astro/server_BKl39dFB.mjs';
 import 'kleur/colors';
-import { $ as $$Heading } from './Heading_wjP1vLsY.mjs';
-import { $ as $$Link } from './Layout_p0gXUp_r.mjs';
+import { $ as $$Heading } from './Heading_ByWiBAVu.mjs';
+import { $ as $$Link } from './Layout_Ca5AaMkF.mjs';
 import { $ as $$FormattedDate } from './FormattedDate_BfZJku5X.mjs';
 
 const $$Astro = createAstro("https://portfolio-site-self-six.vercel.app/");

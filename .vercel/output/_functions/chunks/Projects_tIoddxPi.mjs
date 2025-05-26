@@ -1,8 +1,8 @@
 import { c as createAstro, a as createComponent, m as maybeRenderHead, b as addAttribute, r as renderComponent, d as renderTemplate } from './astro/server_BKl39dFB.mjs';
 import 'kleur/colors';
-import { g as getCollection } from './_astro_content_BjVLjSfh.mjs';
-import { $ as $$Heading } from './Heading_wjP1vLsY.mjs';
-import { $ as $$Link } from './Layout_p0gXUp_r.mjs';
+import { g as getCollection } from './_astro_content_BV6wWwMN.mjs';
+import { $ as $$Heading } from './Heading_ByWiBAVu.mjs';
+import { $ as $$Link } from './Layout_Ca5AaMkF.mjs';
 
 const $$Astro$1 = createAstro("https://portfolio-site-self-six.vercel.app/");
 const $$ProjectCard = createComponent(($$result, $$props, $$slots) => {

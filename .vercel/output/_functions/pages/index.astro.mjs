@@ -1,11 +1,11 @@
 import { a as createComponent, m as maybeRenderHead, r as renderComponent, F as Fragment, d as renderTemplate, u as unescapeHTML } from '../chunks/astro/server_BKl39dFB.mjs';
 import 'kleur/colors';
-import { g as getCollection } from '../chunks/_astro_content_BjVLjSfh.mjs';
-import { a as $$Layout } from '../chunks/Layout_p0gXUp_r.mjs';
-import { $ as $$Hero, a as $$Connect } from '../chunks/Connect_wfGSlV-X.mjs';
-import { $ as $$Heading } from '../chunks/Heading_wjP1vLsY.mjs';
-import { $ as $$Projects } from '../chunks/Projects_DQlCvQtt.mjs';
-import { $ as $$BlogCard } from '../chunks/BlogCard_Brsqsm8y.mjs';
+import { g as getCollection } from '../chunks/_astro_content_BV6wWwMN.mjs';
+import { a as $$Layout } from '../chunks/Layout_Ca5AaMkF.mjs';
+import { $ as $$Hero, a as $$Connect } from '../chunks/Connect_DTS27As6.mjs';
+import { $ as $$Heading } from '../chunks/Heading_ByWiBAVu.mjs';
+import { $ as $$Projects } from '../chunks/Projects_tIoddxPi.mjs';
+import { $ as $$BlogCard } from '../chunks/BlogCard_BYccHdXR.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Features = createComponent(async ($$result, $$props, $$slots) => {

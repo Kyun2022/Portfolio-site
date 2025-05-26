@@ -1,8 +1,8 @@
 import { a as createComponent, r as renderComponent, d as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BKl39dFB.mjs';
 import 'kleur/colors';
-import { a as $$Layout } from '../chunks/Layout_p0gXUp_r.mjs';
-import { $ as $$Projects$1 } from '../chunks/Projects_DQlCvQtt.mjs';
-import { $ as $$Heading } from '../chunks/Heading_wjP1vLsY.mjs';
+import { a as $$Layout } from '../chunks/Layout_Ca5AaMkF.mjs';
+import { $ as $$Projects$1 } from '../chunks/Projects_tIoddxPi.mjs';
+import { $ as $$Heading } from '../chunks/Heading_ByWiBAVu.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Projects = createComponent(($$result, $$props, $$slots) => {

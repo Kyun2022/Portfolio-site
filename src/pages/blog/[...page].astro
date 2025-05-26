@@ -19,7 +19,7 @@ export const getStaticPaths = (async ({ paginate }) => {
       // ブログ投稿がない場合のデフォルトページ
       return [
         {
-          params: { page: undefined },
+          params: { page: '1' },
           props: {
             page: {
               data: [],
@@ -31,21 +31,20 @@ export const getStaticPaths = (async ({ paginate }) => {
       ];
     }
 
-    return paginate(
-      posts.sort(
-        (a, b) =>
-          new Date(b.data.pubDate).getTime() -
-          new Date(a.data.pubDate).getTime()
-      ),
-      {
-        pageSize: 3,
-      }
+    const sortedPosts = posts.sort(
+      (a, b) =>
+        new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
     );
+
+    return paginate(sortedPosts, {
+      pageSize: 3,
+    });
   } catch (error) {
     console.error('Error in getStaticPaths:', error);
+    // エラー時は最低限のページを返す
     return [
       {
-        params: { page: undefined },
+        params: { page: '1' },
         props: {
           page: {
             data: [],

@@ -1,7 +1,7 @@
 import { a as createComponent, r as renderComponent, d as renderTemplate } from '../chunks/astro/server_BKl39dFB.mjs';
 import 'kleur/colors';
-import { a as $$Layout } from '../chunks/Layout_p0gXUp_r.mjs';
-import { $ as $$Hero, a as $$Connect } from '../chunks/Connect_wfGSlV-X.mjs';
+import { a as $$Layout } from '../chunks/Layout_Ca5AaMkF.mjs';
+import { $ as $$Hero, a as $$Connect } from '../chunks/Connect_DTS27As6.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$404 = createComponent(($$result, $$props, $$slots) => {
