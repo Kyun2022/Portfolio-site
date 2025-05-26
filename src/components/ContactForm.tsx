@@ -1,4 +1,3 @@
-import { set } from 'astro:schema';
 import React, { useRef, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
