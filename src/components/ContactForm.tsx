@@ -1,3 +1,4 @@
+import { set } from 'astro:schema';
 import React, { useRef, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -15,6 +16,7 @@ const ContactForm = () => {
     }
     // hit endpoint
     await new Promise((resolve) => setTimeout(resolve, 1500));
+    setIsSubmitted(false);
     toast.success("Thank! I'll be in touch soon.", {
       duration: 4000,
     });
