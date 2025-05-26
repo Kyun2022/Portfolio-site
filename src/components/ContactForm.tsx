@@ -6,6 +6,8 @@ const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
+
     const formData = new FormData(e.currentTarget);
     if (!formData.get('email')) {
       toast.error('Please enter your email');
@@ -21,7 +23,7 @@ const ContactForm = () => {
 
   return (
     <>
-      <form className="contact-form" ref={formRef} onSubmit={handleSubmit}>
+      <form className='contact-form' ref={formRef} onSubmit={handleSubmit}>
         <h2>Let's Connect</h2>
         <p>
           お問い合わせ、見積もり、
@@ -33,13 +35,13 @@ const ContactForm = () => {
         <label>
           your email
           <input
-            type="email"
-            name="email"
-            autoComplete="email"
-            placeholder="e.g., kyundesign2022@gmail.com"
+            type='email'
+            name='email'
+            autoComplete='email'
+            placeholder='e.g., kyundesign2022@gmail.com'
           />
         </label>
-        <button className="link" type="submit" disabled={isSubmitted}>
+        <button className='link' type='submit' disabled={isSubmitted}>
           {isSubmitted ? 'Submitting...' : 'Contact Me'}
         </button>
       </form>
