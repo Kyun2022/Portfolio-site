@@ -6,10 +6,10 @@ import Heading from '@/components/ui/Heading.astro';
 import avatar from '@/assets/avatar.jpeg';
 
 type Props = {
-  currentPage: number;
+  currentPage?: number;
 };
 
-const { currentPage } = Astro.props;
+const { currentPage = 1 } = Astro.props;
 ---
 
 <section aria-label='Hero Section' class='blog-hero container'>

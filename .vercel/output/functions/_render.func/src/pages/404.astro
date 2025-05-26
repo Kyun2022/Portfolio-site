@@ -1,0 +1,27 @@
+---
+// layout
+import Layout from '@/layouts/Layout.astro';
+// components
+import Hero from '@/components/Hero.astro';
+import Connect from '@/components/Connect.astro';
+---
+
+<Layout title='404 | Page Not Found'>
+  <Hero
+    title='😂 ページが見つかりませんでした。'
+    content='お探しのページは見つかりませんでした!'
+    links={[
+      {
+        href: 'https://github.com/Kyun2022',
+        name: 'my github',
+        variant: 'secondary',
+      },
+      {
+        href: '/',
+        name: 'Go Home',
+        variant: 'primary',
+      },
+    ]}
+  />
+  <Connect />
+</Layout>
