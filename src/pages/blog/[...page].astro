@@ -9,68 +9,29 @@ import Layout from '@/layouts/Layout.astro';
 import Pagination from '@/components/blog/Pagination.astro';
 import BlogHero from '@/components/blog/BlogHero.astro';
 
-export const prerender = true;
-
 export const getStaticPaths = (async ({ paginate }) => {
-  try {
-    const posts = await getCollection('blog', ({ data }) => !data.isDraft);
+  const posts = await getCollection('blog', ({ data }) => !data.isDraft);
 
-    if (!posts || posts.length === 0) {
-      // ブログ投稿がない場合のデフォルトページ
-      return [
-        {
-          params: { page: '1' },
-          props: {
-            page: {
-              data: [],
-              currentPage: 1,
-              url: { prev: undefined, next: undefined },
-            },
-          },
-        },
-      ];
-    }
-
-    const sortedPosts = posts.sort(
+  return paginate(
+    posts.sort(
       (a, b) =>
         new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-    );
-
-    return paginate(sortedPosts, {
+    ),
+    {
       pageSize: 3,
-    });
-  } catch (error) {
-    console.error('Error in getStaticPaths:', error);
-    // エラー時は最低限のページを返す
-    return [
-      {
-        params: { page: '1' },
-        props: {
-          page: {
-            data: [],
-            currentPage: 1,
-            url: { prev: undefined, next: undefined },
-          },
-        },
-      },
-    ];
-  }
+    }
+  );
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-
-// ページオブジェクトの存在確認
-if (!page) {
-  throw new Error('Page object is undefined');
-}
 ---
 
-<Layout title={`My Blog | page ${page.currentPage || 1}`}>
-  <BlogHero currentPage={page.currentPage || 1} />
+<Layout title={`My Blog | page ${page.currentPage}`}>
+  <BlogHero currentPage={page.currentPage} />
   <div class='container'>
     <section aria-label='Blog Posts' class='grid-wrapper'>
-      {page.data?.map((post) => <BlogCard post={post} tagName='h2' />) || []}
+      {page.data.map((post) => <BlogCard post={post} tagName='h2' />)}
     </section>
-    <Pagination prev={page.url?.prev} next={page.url?.next} />
+    <Pagination prev={page.url.prev} next={page.url.next} />
   </div>
 </Layout>
