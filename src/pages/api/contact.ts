@@ -26,7 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
     // メール送信
     const { data, error } = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
-      to: ['kyundesign2022@gmail.com'], // あなたのメールアドレス
+      to: ['fm13071303@rx.tnc.ne.jp'], // Resendアカウントのメールアドレス
       subject: `Portfolio Contact from ${name || email}`,
       html: `
         <h2>新しいお問い合わせ</h2>
