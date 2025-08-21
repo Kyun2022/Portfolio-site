@@ -9,6 +9,8 @@ import Layout from '@/layouts/Layout.astro';
 import Pagination from '@/components/blog/Pagination.astro';
 import BlogHero from '@/components/blog/BlogHero.astro';
 
+export const prerender = true;
+
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = await getCollection('blog', ({ data }) => !data.isDraft);
 
