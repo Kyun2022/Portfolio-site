@@ -3,12 +3,12 @@ import { Resend } from 'resend';
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY);
 
+export const prerender = false;
+
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const formData = await request.formData();
-    const email = formData.get('email') as string;
-    const message = formData.get('message') as string;
-    const name = formData.get('name') as string;
+    const body = await request.json();
+    const { email, message, name } = body;
 
     // バリデーション
     if (!email || !message) {

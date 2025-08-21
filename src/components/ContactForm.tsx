@@ -29,7 +29,14 @@ const ContactForm = () => {
       // APIエンドポイントにメール送信を依頼
       const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+        }),
       });
 
       const result = await response.json();
