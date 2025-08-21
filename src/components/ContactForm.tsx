@@ -8,19 +8,44 @@ const ContactForm = () => {
     setIsSubmitted(true);
 
     const formData = new FormData(e.currentTarget);
-    if (!formData.get('email')) {
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+    const name = formData.get('name') as string;
+
+    // バリデーション
+    if (!email) {
       toast.error('Please enter your email');
       setIsSubmitted(false);
       return;
     }
 
-    // モックアップ - 実際のメール送信機能はここに実装
-    setTimeout(() => {
-      toast.success('Message sent successfully!');
+    if (!message) {
+      toast.error('Please enter your message');
       setIsSubmitted(false);
-      // フォームをリセット
-      e.currentTarget.reset();
-    }, 2000);
+      return;
+    }
+
+    try {
+      // APIエンドポイントにメール送信を依頼
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success('Message sent successfully!');
+        e.currentTarget.reset();
+      } else {
+        toast.error(result.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      toast.error('Network error. Please try again.');
+    } finally {
+      setIsSubmitted(false);
+    }
   };
 
   return (
@@ -35,12 +60,31 @@ const ContactForm = () => {
           下記までご連絡ください
         </p>
         <label>
+          your name (optional)
+          <input
+            type='text'
+            name='name'
+            autoComplete='name'
+            placeholder='e.g., Tanaka Taro'
+          />
+        </label>
+        <label>
           your email
           <input
             type='email'
             name='email'
             autoComplete='email'
             placeholder='e.g., kyundesign2022@gmail.com'
+            required
+          />
+        </label>
+        <label>
+          your message
+          <textarea
+            name='message'
+            rows={4}
+            placeholder='お問い合わせ内容をご記入ください...'
+            required
           />
         </label>
         <button className='link' type='submit' disabled={isSubmitted}>
