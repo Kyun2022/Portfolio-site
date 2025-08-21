@@ -32,3 +32,8 @@
   id: 7
   image: '@/assets/project-thumbnails/gasp-training.png'
   href: 'https://gsap-project-delta-five.vercel.app/'
+
+- title: Jichikai App
+  id: 8
+  image: '@/assets/project-thumbnails/jichikai-app.png'
+  href: 'https://jichikai-app.vercel.app/'
