@@ -12,5 +12,5 @@ export default defineConfig({
   site: 'https://portfolio-site-self-six.vercel.app/',
   integrations: [sitemap(), react()],
   adapter: vercel(),
-  output: 'hybrid',
+  output: 'server',
 });
