@@ -1,39 +1,39 @@
-- title: Todo-app
+- title: Jichikai App
   id: 1
+  image: '@/assets/project-thumbnails/jichikai-app.png'
+  href: 'https://jichikai-app.vercel.app/'
+
+- title: Todo-app
+  id: 2
   image: '@/assets/project-thumbnails/todo-app.png'
   href: 'https://next-tasks-delta-flame.vercel.app/'
 
 - title: React-app
-  id: 2
+  id: 3
   image: '@/assets/project-thumbnails/react-app.jpg'
   href: 'https://react-hooks-app-beta.vercel.app/'
 
 - title: Minesweeper
-  id: 3
+  id: 4
   image: '@/assets/project-thumbnails/minesweeper.png'
   href: 'https://minesweeper-eight-lake.vercel.app/'
 
 - title: Othello
-  id: 4
+  id: 5
   image: '@/assets/project-thumbnails/othello.png'
   href: 'https://othello-app-zeta.vercel.app/'
 
 - title: Retreat (all:test)
-  id: 5
+  id: 6
   image: '@/assets/project-thumbnails/retreat.jpg'
   href: 'https://portfolio12.kyundesign.com/'
 
 - title: GSAP-site (all:test)
-  id: 6
+  id: 7
   image: '@/assets/project-thumbnails/gsap-site.jpg'
   href: 'https://portfolio7.kyundesign.com/'
 
 - title: GSAP-Training
-  id: 7
+  id: 8
   image: '@/assets/project-thumbnails/gasp-training.png'
   href: 'https://gsap-project-delta-five.vercel.app/'
-
-- title: Jichikai App
-  id: 8
-  image: '@/assets/project-thumbnails/jichikai-app.png'
-  href: 'https://jichikai-app.vercel.app/'
