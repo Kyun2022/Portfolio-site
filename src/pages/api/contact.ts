@@ -25,7 +25,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // メール送信
     const { data, error } = await resend.emails.send({
-      from: 'Portfolio Contact <noreply@yourdomain.com>', // 後で実際のドメインに変更
+      from: 'Portfolio Contact <noreply@yourdomain.com>',
       to: ['kyundesign2022@gmail.com'], // あなたのメールアドレス
       subject: `Portfolio Contact from ${name || email}`,
       html: `

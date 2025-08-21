@@ -473,7 +473,7 @@ time {
     border-radius: var(--rounded-sm);
     box-shadow: var(--shadow);
     object-fit: cover;
-    width: 200px;
+    width: 280px;
     aspect-ratio: 4 / 5;
   }
   .contact-form {
@@ -495,7 +495,8 @@ time {
       color: var(--color-accent);
       font-weight: var(--fw-bold);
     }
-    input {
+    input,
+    textarea {
       padding: var(--space-2xs);
       color: var(--color-text);
       background-color: var(--color-frg);
@@ -503,6 +504,7 @@ time {
       border-radius: var(--rounded-sm);
       font-weight: var(--fw-regular);
       transition: all var(--fast) var(--cubic);
+      resize: vertical;
       &::placeholder {
         color: var(--color-text);
         opacity: 0.7;
